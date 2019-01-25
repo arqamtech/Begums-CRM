@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Add Client</ion-title>
+    <ion-title>Add Employee</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -13,11 +13,11 @@
   <ion-grid>
     <ion-row>
       <ion-col class="mainCol" push-md-4 col-md-4 col-12>
-        <ion-card class="flpAnim" >
+        <ion-card class="flpAnim">
           <ion-row>
             <ion-col col-12 col-md-8 push-md-2>
               <ion-card-content>
-                <ion-card-title>Add Client</ion-card-title>
+                <ion-card-title>Add Employee</ion-card-title>
 
                 <ion-item margin-vertical round>
                   <ion-label stacked>Name</ion-label>
@@ -36,7 +36,7 @@
                   <ion-input type="number" (keyup.enter)="checkData()" [(ngModel)]="phone"></ion-input>
                 </ion-item>
 
-                <button ion-button round (click)="checkData()">Add Client</button>
+                <button ion-button round (click)="checkData()">Add Employee</button>
 
 
               </ion-card-content>

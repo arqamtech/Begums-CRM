@@ -5,14 +5,17 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import moment from 'moment';
 
 
+
+
+
 @IonicPage()
 @Component({
-  selector: 'page-add-users',
-  templateUrl: 'add-users.html',
+  selector: 'page-add-employees',
+  templateUrl: 'add-employees.html',
 })
-export class AddUsersPage {
+export class AddEmployeesPage {
 
-  userLabel = "User's";
+  userLabel = "Employee's";
 
   name: string;
   mail: string;
@@ -36,7 +39,7 @@ export class AddUsersPage {
       if (this.mail) {
         if (this.phone) {
           if (this.phone.length == 10) {
-            this.addUser();
+            this.addEmployee();
           } else { this.presentToast("Enter a valid Phonenumber") }
         } else { this.presentToast("Enter" + this.userLabel + "Phonenumber") }
       } else { this.presentToast("Enter" + this.userLabel + "Email") }
@@ -45,14 +48,14 @@ export class AddUsersPage {
 
 
 
-  addUser() {
+  addEmployee() {
     let loading = this.loadingCtrl.create({
-      content: 'Adding Client...'
+      content: 'Adding Employee...'
     });
     loading.present();
 
 
-    firebase.database().ref("Users").push({
+    firebase.database().ref("Employees").push({
       Name: this.name,
       Email: this.mail,
       Phone: this.phone,

@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Clients</ion-title>
+    <ion-title>Employees</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -15,9 +15,9 @@
         <ion-searchbar item-end animated="true" placeholder="Search by name" [(ngModel)]="searchBar" (ionInput)="getItems(searchBar)"></ion-searchbar>
       </ion-col>
       <ion-col col-12 col-md-6 push-md-2>
-        <button ion-button round float-right (click)="addUser()">
+        <button ion-button round float-right (click)="addEmployee()">
           <ion-icon padding-right name="md-add"></ion-icon>
-          Add Client
+          Add Employee
         </button>
       </ion-col>
     </ion-row>
@@ -27,12 +27,12 @@
 
 
 
-  <ion-grid class="strip" *ngIf="!Users.length">
+  <ion-grid class="strip" *ngIf="!Employees.length">
     <ion-row>
       <ion-col push-md-2 col-md-8 col-12>
         <ion-card class="roundCard flpAnim">
           <ion-card-content text-center>
-            <ion-card-title>No Users</ion-card-title>
+            <ion-card-title>No Employees</ion-card-title>
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -42,7 +42,7 @@
 
 
 
-  <ion-grid class="strip" *ngIf="Users.length">
+  <ion-grid class="strip" *ngIf="Employees.length">
     <ion-row>
       <ion-col push-md-2 col-md-8 col-12>
         <ion-card class="roundCard slide-in-left">
@@ -60,7 +60,7 @@
           </ion-row>
 
           <ion-card-content>
-            <ion-row padding *ngFor="let u of Users">
+            <ion-row padding *ngFor="let u of Employees">
               <ion-col col-12 col-md-3>
                 <h2>{{u.Name}}</h2>
               </ion-col>
@@ -71,13 +71,13 @@
                 <h2>{{u.Phone}}</h2>
               </ion-col>
               <ion-col col-12 col-md-3 text-center>
-                <button ion-button icon-only clear (click)="viewUser(u)">
+                <button ion-button icon-only clear (click)="viewEmployee(u)">
                   <ion-icon name="eye"></ion-icon>
                 </button>
-                <button ion-button icon-only clear (click)="editUser(u)">
+                <button ion-button icon-only clear (click)="editEmployee(u)">
                   <ion-icon name="md-create"></ion-icon>
                 </button>
-                <button ion-button icon-only clear (click)="delConfirmUser(u)">
+                <button ion-button icon-only clear (click)="delConfirmEmployee(u)">
                   <ion-icon name="md-trash"></ion-icon>
                 </button>
               </ion-col>

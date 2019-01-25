@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, MenuController, LoadingController 
 import { UsersPage } from '../users/users';
 import { AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase';
+import { EmployeesPage } from '../employees/employees';
 
 @IonicPage()
 @Component({
@@ -13,6 +14,7 @@ export class DashboardPage {
 
   ll: string = null;
   users: number = 0;
+  emps: number = 0;
 
   constructor(
     public navCtrl: NavController,
@@ -42,9 +44,14 @@ export class DashboardPage {
     loading.present();
     this.db.list(`Users`).snapshotChanges().subscribe(snap => {
       this.users = snap.length;
-      loading.dismiss();
     })
+    this.db.list(`Employees`).snapshotChanges().subscribe(snap => {
+      this.emps = snap.length;
+    })
+    loading.dismiss();
   }
 
+
+  gtEmps() { this.navCtrl.push(EmployeesPage); }
   gtUsers() { this.navCtrl.push(UsersPage); }
 }

@@ -12,7 +12,7 @@ import { UsersPage } from '../../MainPages/users/users';
 export class EditUsersPage {
 
 
-  userLabel = "User's";
+  userLabel = "Client's";
 
   user = this.navParams.get("user");
 
@@ -45,7 +45,7 @@ export class EditUsersPage {
 
   updateUser() {
     let loading = this.loadingCtrl.create({
-      content: 'Updating User...'
+      content: 'Updating Client...'
     });
     loading.present();
 

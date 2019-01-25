@@ -4,18 +4,20 @@ import { AddUsersPage } from '../../Users/add-users/add-users';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { EditUsersPage } from '../../Users/edit-users/edit-users';
 import * as firebase from 'firebase';
-import { UserDetailPage } from '../../Users/user-detail/user-detail';
-
+import { EditEmployeesPage } from '../../Employees/edit-employees/edit-employees';
+import { AddEmployeesPage } from '../../Employees/add-employees/add-employees';
+import { EmployeDetailPage } from '../../Employees/employe-detail/employe-detail';
 
 @IonicPage()
 @Component({
-  selector: 'page-users',
-  templateUrl: 'users.html',
+  selector: 'page-employees',
+  templateUrl: 'employees.html',
 })
-export class UsersPage {
+export class EmployeesPage {
 
-  Users: Array<any> = [];
-  UsersLoaded : Array<any> = [];
+
+  Employees: Array<any> = [];
+  EmployeesLoaded: Array<any> = [];
 
 
   constructor(
@@ -27,10 +29,10 @@ export class UsersPage {
     public db: AngularFireDatabase,
   ) {
     this.menuCtrl.enable(true);
-    this.getUsers();
+    this.getEmployees();
   }
 
-  getUsers() {
+  getEmployees() {
 
     let loading = this.loadingCtrl.create({
       content: 'Logging In...'
@@ -38,7 +40,7 @@ export class UsersPage {
     loading.present();
 
 
-    this.db.list(`Users`).snapshotChanges().subscribe(snap => {
+    this.db.list(`Employees`).snapshotChanges().subscribe(snap => {
       let tempArray: Array<any> = [];
       snap.forEach(snip => {
         let temp: any = snip.payload.val();
@@ -47,14 +49,14 @@ export class UsersPage {
 
         tempArray.push(temp);
       })
-      this.Users = tempArray;
-      this.UsersLoaded = tempArray;
+      this.Employees = tempArray;
+      this.EmployeesLoaded = tempArray;
       loading.dismiss();
     })
   }
 
   initializeItems(): void {
-    this.Users = this.UsersLoaded;
+    this.Employees = this.EmployeesLoaded;
   }
   getItems(searchbar) {
     this.initializeItems();
@@ -62,7 +64,7 @@ export class UsersPage {
     if (!q) {
       return;
     }
-    this.Users = this.Users.filter((v) => {
+    this.Employees = this.Employees.filter((v) => {
       if ((v.Name) && q) {
         if (v.Name.toLowerCase().indexOf(q.toLowerCase()) > -1) {
           return true;
@@ -73,9 +75,9 @@ export class UsersPage {
   }
 
 
-  delConfirmUser(u) {
+  delConfirmEmployee(u) {
     let confirm = this.alertCtrl.create({
-      title: 'Are you sure you want to Delete Client ?',
+      title: 'Are you sure you want to Delete Employee ?',
       message: 'This data cannot be recovered again.',
       buttons: [
         {
@@ -87,20 +89,20 @@ export class UsersPage {
         {
           text: "Yes, I'm sure",
           handler: () => {
-            this.delUser(u);
+            this.delEmployee(u);
           }
         }
       ]
     });
     confirm.present();
   }
-  delUser(u) {
+  delEmployee(u) {
     let loading = this.loadingCtrl.create({
-      content: 'Deleting Client...'
+      content: 'Deleting Employee...'
     });
     loading.present();
 
-    firebase.database().ref("Users").child(u.key).remove().then(() => {
+    firebase.database().ref("Employees").child(u.key).remove().then(() => {
       loading.dismiss();
       this.presentToast(u.Name + " " + "deleted");
     })
@@ -108,9 +110,10 @@ export class UsersPage {
 
 
 
-  editUser(u) { this.navCtrl.push(EditUsersPage, { user: u }); }
-  addUser() { this.navCtrl.push(AddUsersPage); }
-  viewUser(u) { this.navCtrl.push(UserDetailPage, { user: u }); }
+  editEmployee(e) { this.navCtrl.push(EditEmployeesPage, { Employee: e }); }
+  addEmployee() { this.navCtrl.push(AddEmployeesPage); }
+  viewEmployee(u) { this.navCtrl.push(EmployeDetailPage, { employee: u }); }
+
 
   presentToast(msg) {
     let toast = this.toastCtrl.create({
