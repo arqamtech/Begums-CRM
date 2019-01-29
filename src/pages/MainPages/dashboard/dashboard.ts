@@ -5,6 +5,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase';
 import moment from 'moment';
 import { FeedbackPage } from '../../Feedback/feedback/feedback';
+import { Events } from 'ionic-angular';
 
 
 @IonicPage()
@@ -30,6 +31,7 @@ export class DashboardPage {
     public db: AngularFireDatabase,
     public navParams: NavParams
   ) {
+
     this.menuCtrl.enable(true);
     this.getUsers();
     this.getLastlogin();

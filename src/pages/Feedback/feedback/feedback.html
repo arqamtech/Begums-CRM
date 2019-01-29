@@ -14,4 +14,16 @@
 
 
 
+  <ion-slides>
+    <ion-slide>
+      <ionic3-star-rating activeIcon="ios-star" defaultIcon="ios-star-outline" activeColor="#F5B2B6" defaultColor="#431A21"
+        readonly="false" [rating]="0">
+      </ionic3-star-rating>
+      <button ion-button margin-top (click)="submitRating()" round>Submit</button>
+    </ion-slide>
+  </ion-slides>
+
+
+  {{rating | json}}
+
 </ion-content>

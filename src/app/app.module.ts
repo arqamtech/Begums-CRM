@@ -25,6 +25,7 @@ import { ServicesDetailsPage } from '../pages/Services/services-details/services
 import { EditServicePage } from '../pages/Services/edit-service/edit-service';
 import { StartSessionPage } from '../pages/Session/start-session/start-session';
 import { FeedbackPage } from '../pages/Feedback/feedback/feedback';
+import { StarRatingModule } from 'ionic3-star-rating';
 
 
 firebase.initializeApp(firebaseCred);
@@ -52,6 +53,7 @@ firebase.initializeApp(firebaseCred);
   ],
   imports: [
     BrowserModule,
+    StarRatingModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseCred),
     AngularFireDatabaseModule,

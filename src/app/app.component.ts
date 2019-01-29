@@ -10,6 +10,7 @@ import { ProfilePage } from '../pages/Profile/profile/profile';
 import { LoginPage } from '../pages/Auth/login/login';
 import * as firebase from 'firebase';
 import { ServicesPage } from '../pages/MainPages/services/services';
+import { FeedbackPage } from '../pages/Feedback/feedback/feedback';
 
 
 
@@ -31,7 +32,7 @@ export class MyApp {
     public platform: Platform,
     public statusBar: StatusBar,
     public toastCtrl: ToastController,
-    public alertCtrl : AlertController,
+    public alertCtrl: AlertController,
     public splashScreen: SplashScreen
   ) {
     this.initializeApp();
