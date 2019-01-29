@@ -18,11 +18,13 @@ import { ProfilePage } from '../pages/Profile/profile/profile';
 import { EditProfilePage } from '../pages/Profile/edit-profile/edit-profile';
 import { AddAdminPage } from '../pages/MainPages/add-admin/add-admin';
 import { ChangePassPage } from '../pages/Auth/change-pass/change-pass';
-import { EmployeesPage } from '../pages/MainPages/employees/employees';
-import { AddEmployeesPage } from '../pages/Employees/add-employees/add-employees';
-import { EditEmployeesPage } from '../pages/Employees/edit-employees/edit-employees';
-import { EmployeDetailPage } from '../pages/Employees/employe-detail/employe-detail';
 import { UserDetailPage } from '../pages/Users/user-detail/user-detail';
+import { AddServicePage } from '../pages/Services/add-service/add-service';
+import { ServicesPage } from '../pages/MainPages/services/services';
+import { ServicesDetailsPage } from '../pages/Services/services-details/services-details';
+import { EditServicePage } from '../pages/Services/edit-service/edit-service';
+import { StartSessionPage } from '../pages/Session/start-session/start-session';
+import { FeedbackPage } from '../pages/Feedback/feedback/feedback';
 
 
 firebase.initializeApp(firebaseCred);
@@ -40,11 +42,13 @@ firebase.initializeApp(firebaseCred);
     EditProfilePage,
     AddAdminPage,
     ChangePassPage,
-    EmployeesPage,
-    AddEmployeesPage,
-    EditEmployeesPage,
-    EmployeDetailPage,
     UserDetailPage,
+    AddServicePage,
+    ServicesPage,
+    ServicesDetailsPage,
+    EditServicePage,
+    StartSessionPage,
+    FeedbackPage,
   ],
   imports: [
     BrowserModule,
@@ -65,11 +69,13 @@ firebase.initializeApp(firebaseCred);
     EditProfilePage,
     AddAdminPage,
     ChangePassPage,
-    EmployeesPage,
-    AddEmployeesPage,
-    EditEmployeesPage,
-    EmployeDetailPage,
     UserDetailPage,
+    AddServicePage,
+    ServicesPage,
+    ServicesDetailsPage,
+    EditServicePage,
+    StartSessionPage,
+    FeedbackPage,
   ],
   providers: [
     StatusBar,

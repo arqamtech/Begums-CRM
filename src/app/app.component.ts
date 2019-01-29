@@ -9,7 +9,7 @@ import { UsersPage } from '../pages/MainPages/users/users';
 import { ProfilePage } from '../pages/Profile/profile/profile';
 import { LoginPage } from '../pages/Auth/login/login';
 import * as firebase from 'firebase';
-import { EmployeesPage } from '../pages/MainPages/employees/employees';
+import { ServicesPage } from '../pages/MainPages/services/services';
 
 
 
@@ -38,8 +38,8 @@ export class MyApp {
     this.pages = [
       { title: 'DashBoard', component: DashboardPage, icon: "ios-analytics" },
       { title: 'Clients', component: UsersPage, icon: "ios-people" },
-      { title: 'Employees', component: EmployeesPage, icon: "ios-people" },
-      { title: 'Add Admin', component: AddAdminPage, icon: "ios-person" },
+      { title: 'Services', component: ServicesPage, icon: "brush" },
+      // { title: 'Add Admin', component: AddAdminPage, icon: "ios-person" },
       { title: 'Profile', component: ProfilePage, icon: "ios-people" },
     ];
     this.activePage = this.pages[0];
@@ -53,7 +53,7 @@ export class MyApp {
             if (itemSnap.exists()) {
               var welMsg = "Welcome" + " " + itemSnap.val().Name;
               // Managing Root Page
-              this.rootPage = UsersPage;
+              this.rootPage = DashboardPage;
 
 
               this.presentToast(welMsg);

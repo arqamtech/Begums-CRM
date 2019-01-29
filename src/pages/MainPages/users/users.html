@@ -51,11 +51,11 @@
             <ion-col col-12 col-md-3>
               <h2 ion-text color="tableTopC">Name</h2>
             </ion-col>
-            <ion-col col-12 col-md-4>
-              <h2 ion-text color="tableTopC">Email</h2>
-            </ion-col>
             <ion-col col-12 col-md-2>
               <h2 ion-text color="tableTopC">Phone</h2>
+            </ion-col>
+            <ion-col col-12 col-md-4>
+              <h2 ion-text color="tableTopC">DOB</h2>
             </ion-col>
           </ion-row>
 
@@ -64,11 +64,11 @@
               <ion-col col-12 col-md-3>
                 <h2>{{u.Name}}</h2>
               </ion-col>
-              <ion-col col-12 col-md-4>
-                <h2>{{u.Email}}</h2>
-              </ion-col>
               <ion-col col-12 col-md-2>
                 <h2>{{u.Phone}}</h2>
+              </ion-col>
+              <ion-col col-12 col-md-2>
+                <h2>{{u.DOB | date : 'd MMM, y'}}</h2>
               </ion-col>
               <ion-col col-12 col-md-3 text-center>
                 <button ion-button icon-only clear (click)="viewUser(u)">
@@ -80,6 +80,9 @@
                 <button ion-button icon-only clear (click)="delConfirmUser(u)">
                   <ion-icon name="md-trash"></ion-icon>
                 </button>
+              </ion-col>
+              <ion-col col-md-2 col-12>
+                <button ion-button round (click)="startSession(u)">Start Session</button>
               </ion-col>
             </ion-row>
 

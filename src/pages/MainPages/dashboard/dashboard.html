@@ -17,6 +17,17 @@
   <ion-grid>
     <ion-row>
 
+      <ion-col col-12 col-md-2 class="curs flpAnim ">
+        <ion-card class="roundCard" text-center padding-top>
+          <ion-item>
+            <ion-icon item-start name="ios-people"></ion-icon>
+            <h1 ion-text item-end color="dark" padding>{{sess}}</h1>
+          </ion-item>
+          <ion-item text-center color="primary">
+            <h2 ion-text ion-text color="tableTopC">Sessions</h2>
+          </ion-item>
+        </ion-card>
+      </ion-col>
 
 
       <ion-col col-12 col-md-2 class="curs flpAnim ">
@@ -33,22 +44,71 @@
 
 
 
-      <ion-col col-12 col-md-2 class="curs flpAnim ">
-        <ion-card class="roundCard" text-center padding-top (click)="gtEmps()">
-          <ion-item>
-            <ion-icon item-start name="ios-people"></ion-icon>
-            <h1 ion-text item-end color="dark" padding>{{emps}}</h1>
-          </ion-item>
-          <ion-item text-center color="primary">
-            <h2 ion-text ion-text color="tableTopC">Employees</h2>
-          </ion-item>
-        </ion-card>
-      </ion-col>
 
 
 
 
     </ion-row>
   </ion-grid>
+
+
+
+  <ion-grid class="strip" *ngIf="!sessions.length">
+    <ion-row>
+      <ion-col push-md-2 col-md-8 col-12>
+        <ion-card class="roundCard flpAnim">
+          <ion-card-content text-center>
+            <ion-card-title>No Current Sessions</ion-card-title>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+
+  <ion-grid class="strip" *ngIf="sessions.length">
+    <ion-row>
+      <ion-col push-md-2 col-md-8 col-12>
+        <ion-card class="roundCard slide-in-top">
+
+          <ion-row class="tableTop" padding>
+            <ion-col col-12 col-md-3>
+              <h2 ion-text color="tableTopC">Name</h2>
+            </ion-col>
+            <ion-col col-12 col-md-4>
+              <h2 ion-text color="tableTopC">Services</h2>
+            </ion-col>
+            <ion-col col-12 col-md-3>
+              <h2 ion-text color="tableTopC">Started</h2>
+            </ion-col>
+          </ion-row>
+
+          <ion-card-content>
+            <ion-row padding *ngFor="let s of sessions">
+              <ion-col col-12 col-md-3>
+                <h2>{{s.ClientName}}</h2>
+              </ion-col>
+              <ion-col col-12 col-md-4>
+                <p *ngFor="let i of s.Services">{{i.Name}}</p>
+              </ion-col>
+              <ion-col col-12 col-md-3>
+                <h2>{{s.StartedNow}}</h2>
+                <!-- <h2>{{s.Started | date : 'medium'}}</h2> -->
+              </ion-col>
+              <ion-col col-12 col-md-2>
+                <button ion-button round (click)="confirmEndSession(s)">End Session</button>
+              </ion-col>
+            </ion-row>
+
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
 
 </ion-content>

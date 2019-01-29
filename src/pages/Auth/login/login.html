@@ -3,18 +3,18 @@
   <ion-grid>
     <ion-row>
       <ion-col class="mainCol" push-md-4 col-md-4 col-12>
-        <ion-card class="flpAnim" >
+        <ion-card class="flpAnim">
           <ion-row>
             <ion-col col-12 col-md-8 push-md-2>
               <ion-card-content>
-                <ion-card-title>Client Dashboard</ion-card-title>
-
+                <!-- <ion-card-title>Client Dashboard</ion-card-title> -->
+                <img src="assets/imgs/logo.png" />
                 <ion-item margin-vertical round>
                   <ion-label stacked>Email</ion-label>
                   <ion-input type="email" (keyup.enter)="checkData()" [(ngModel)]="mail"></ion-input>
                 </ion-item>
 
-                <ion-item margin-vertical round >
+                <ion-item margin-vertical round>
                   <ion-icon name="home"></ion-icon>
                   <ion-label stacked>Password</ion-label>
                   <ion-input type="password" (keyup.enter)="checkData()" [(ngModel)]="pass"></ion-input>

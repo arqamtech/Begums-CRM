@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Start Session</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="close()" clear icon-only>
+        <ion-icon name="md-close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <button ion-button round float-right (click)="start()">Start Session</button>
+
+{{selArray | json}}
+  <div class="content" *ngFor="let s of Services">
+    <ion-checkbox [(ngModel)]="s.Checked" (ionChange)="addToArr(s)"></ion-checkbox>
+    {{s.Name}}
+  </div>
+
+</ion-content>

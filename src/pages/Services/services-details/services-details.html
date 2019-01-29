@@ -1,0 +1,40 @@
+<ion-header>
+    <ion-navbar color="primary">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Service Detail</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  
+  <ion-content>
+  
+    <ion-grid>
+      <ion-row>
+        <ion-col push-md-4 col-md-4 col-12>
+          <ion-card class="roundCard flpAnim" margin-top>
+            <ion-card-content>
+              <ion-card-title color="dark" margin-bottom>
+                {{service.Name}}
+
+              </ion-card-title>
+              <ion-item>
+                <h2 ion-text item-start color="dark">Duration</h2>
+                <h2 ion-text item-end color="dark">{{service.Duration}}</h2>
+              </ion-item>
+  
+              <ion-item>
+                <h2 ion-text item-start color="dark">Description</h2>
+                <h2 ion-text item-end text-right color="dark">{{service.Description}}</h2>
+              </ion-item>
+  
+  
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  
+  
+  </ion-content>

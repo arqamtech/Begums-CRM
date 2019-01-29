@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the UserDetailPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @IonicPage()
 @Component({
@@ -14,17 +8,31 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'user-detail.html',
 })
 export class UserDetailPage {
+
   user = this.navParams.get("user");
 
-
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    console.log(this.user);
-    
+  sessions: Array<any> = [];
+  constructor(
+    public navCtrl: NavController,
+    public db: AngularFireDatabase,
+    public navParams: NavParams
+  ) {
+    this.getSessions();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad UserDetailPage');
-  }
+  getSessions() {
+    this.db.list(`User Sessions/${this.user.key}`).snapshotChanges().subscribe(snap => {
+      this.sessions = [];
+      snap.forEach(snip => {
+        this.db.object(`Sessions/${snip.key}`).snapshotChanges().subscribe(clip => {
+          let temp: any = clip.payload.val();
+          temp.key = clip.key;
+          console.log(temp);
+          
+          this.sessions.push(temp)
+        })
 
+      })
+    })
+  }
 }

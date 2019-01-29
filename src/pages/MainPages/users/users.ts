@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController, LoadingController, AlertController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, LoadingController, AlertController, ToastController, ModalController } from 'ionic-angular';
 import { AddUsersPage } from '../../Users/add-users/add-users';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { EditUsersPage } from '../../Users/edit-users/edit-users';
 import * as firebase from 'firebase';
 import { UserDetailPage } from '../../Users/user-detail/user-detail';
+import { StartSessionPage } from '../../Session/start-session/start-session';
 
 
 @IonicPage()
@@ -22,6 +23,7 @@ export class UsersPage {
     public navCtrl: NavController,
     public menuCtrl: MenuController,
     public toastCtrl: ToastController,
+    public modalController : ModalController,
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
     public db: AngularFireDatabase,
@@ -33,7 +35,7 @@ export class UsersPage {
   getUsers() {
 
     let loading = this.loadingCtrl.create({
-      content: 'Logging In...'
+      content: 'Getting Users...'
     });
     loading.present();
 
@@ -106,7 +108,10 @@ export class UsersPage {
     })
   }
 
-
+  startSession(u){
+    const modal = this.modalController.create(StartSessionPage,{user : u})
+    modal.present();
+  }
 
   editUser(u) { this.navCtrl.push(EditUsersPage, { user: u }); }
   addUser() { this.navCtrl.push(AddUsersPage); }

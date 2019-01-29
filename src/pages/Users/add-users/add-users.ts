@@ -15,7 +15,7 @@ export class AddUsersPage {
   userLabel = "User's";
 
   name: string;
-  mail: string;
+  dob: string;
   phone: string;
 
 
@@ -33,13 +33,11 @@ export class AddUsersPage {
 
   checkData() {
     if (this.name) {
-      if (this.mail) {
-        if (this.phone) {
-          if (this.phone.length == 10) {
-            this.addUser();
-          } else { this.presentToast("Enter a valid Phonenumber") }
-        } else { this.presentToast("Enter" + this.userLabel + "Phonenumber") }
-      } else { this.presentToast("Enter" + this.userLabel + "Email") }
+      if (this.phone) {
+        if (this.phone.length == 10) {
+          this.addUser();
+        } else { this.presentToast("Enter a valid Phonenumber") }
+      } else { this.presentToast("Enter" + this.userLabel + "Phonenumber") }
     } else { this.presentToast("Enter" + this.userLabel + "Name") }
   }
 
@@ -54,7 +52,7 @@ export class AddUsersPage {
 
     firebase.database().ref("Users").push({
       Name: this.name,
-      Email: this.mail,
+      DOB: this.dob,
       Phone: this.phone,
       TimeStamp: moment().format()
     }).then(() => {
